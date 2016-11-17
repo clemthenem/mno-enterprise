@@ -1,26 +1,39 @@
 <div class="row">
   <div class="col-lg-3 col-md-6 col-xs-12">
-    <rd-kpi class="kpi-color-1" description="Users" icon="fa-users" link="#/customers" link-text="{{vm.users.kpi.new_month_count}} new this current month" loading="!vm.users.kpi" >
-      <rd-kpi-body-number number="{{vm.users.kpi.total_count}}"><rd-kpi-body-number>
-    </rd-kpi>
+    <mno-kpi
+      icon="fa-users" bg-color="#E54661"
+      description="Users"
+      value="{{vm.users.kpi.total_count}}"
+      mno-ui-sref="dashboard.customers"
+      link-text="{{vm.users.kpi.new_month_count}} new this current month"
+      loading="!vm.users.kpi"></mno-kpi>
+  </div>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <mno-kpi
+      icon="fa-sitemap" bg-color="#FFA644"
+      description="Organizations"
+      value="{{vm.organizations.kpi.total_count}}"
+      mno-ui-sref="dashboard.customers"
+      link-text="{{vm.organizations.kpi.with_cc_count}} with a credit card"
+      loading="!vm.organizations.kpi"></mno-kpi>
   </div>
 
   <div class="col-lg-3 col-md-6 col-xs-12">
-    <rd-kpi class="kpi-color-2" description="Organizations" icon="fa-sitemap" link="#/customers" link-text="{{vm.organizations.kpi.with_cc_count}} with a credit card" loading="!vm.organizations.kpi">
-      <rd-kpi-body-number number="{{vm.organizations.kpi.total_count}}"><rd-kpi-body-number>
-    </rd-kpi>
+    <mno-kpi
+      icon="fa-file-text-o" bg-color="#998A2F"
+      description="Last customer invoicing"
+      unit="{{vm.invoices.lastInvoicingAmount.currency}}" value="{{vm.invoices.lastInvoicingAmount.amount}}"
+      mno-ui-sref="dashboard.finance"
+      loading="!vm.invoices.lastInvoicingAmount"></mno-kpi>
   </div>
 
   <div class="col-lg-3 col-md-6 col-xs-12">
-    <rd-kpi class="kpi-color-3" description="Last customer invoicing" icon="fa-file-text-o" link="#/finance" loading="!vm.invoices.lastInvoicingAmount">
-      <rd-kpi-body-currency amount="{{vm.invoices.lastInvoicingAmount.amount}}" currency="{{vm.invoices.lastInvoicingAmount.currency}}"><rd-kpi-body-currency>
-    </rd-kpi>
-  </div>
-
-  <div class="col-lg-3 col-md-6 col-xs-12">
-    <rd-kpi class="kpi-color-4" description="Still to be paid" icon="fa-money" link="#/finance" loading="!vm.invoices.outstandingAmount">
-      <rd-kpi-body-currency amount="{{vm.invoices.outstandingAmount.amount}}" currency="{{vm.invoices.outstandingAmount.currency}}"><rd-kpi-body-currency>
-    </rd-kpi>
+    <mno-kpi
+      icon="fa-money" bg-color="#2C594F"
+      description="Still to be paid"
+      unit="{{vm.invoices.outstandingAmount.currency}}" value="{{vm.invoices.outstandingAmount.amount}}"
+      mno-ui-sref="dashboard.finance"
+      loading="!vm.invoices.outstandingAmount"></mno-kpi>
   </div>
 </div>
 
