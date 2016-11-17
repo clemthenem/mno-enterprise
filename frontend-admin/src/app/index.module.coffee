@@ -13,6 +13,7 @@
   'platanus.inflector',
   'smart-table',
   'angularMoment',
+  'mnoUiElements',
   'duScroll',
   'ngPageTitle'
 ]

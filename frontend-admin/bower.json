@@ -17,10 +17,10 @@
     "font-awesome": "~4.4.0",
     "lodash": "~3.10.1",
     "restangular": "~1.5.1",
-    "rdash-ui": "~1.0.1",
     "angular-scroll": "^1.0.0",
     "angular-smart-table": "^2.1.8",
-    "ng-page-title": "^1.1.1"
+    "ng-page-title": "^1.1.1",
+    "mno-ui-elements": "../"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
