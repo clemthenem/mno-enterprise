@@ -1,4 +1,4 @@
-@App.controller 'ConnectMyobModalCtrl', ($window, $httpParamSerializer, $uibModalInstance, app) ->
+@App.controller 'ConnectMyobModalCtrl', ($window, $httpParamSerializer, $uibModalInstance, MnoAppsInstances, app) ->
   'ngInject'
   vm = this
 
@@ -10,7 +10,7 @@
   vm.versions = [{name: "Account Right Live", value: "account_right"}, {name: "Essentials", value: "essentials"}]
 
   vm.connect = (form) ->
-    $window.location.href = $window.location.href = MnoAppsInstances.oAuthConnectPath(app) + '&' + $httpParamSerializer(form)
+    $window.location.href = MnoAppsInstances.oAuthConnectPath(app, $httpParamSerializer(form))
 
   vm.close = ->
     $uibModalInstance.close()

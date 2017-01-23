@@ -14,7 +14,7 @@
 
   vm.connect = (form) ->
     form['extra_params[]'] = "payroll" if vm.payroll
-    $window.location.href = MnoAppsInstances.oAuthConnectPath(app) + '&' + $httpParamSerializer(form)
+    $window.location.href = MnoAppsInstances.oAuthConnectPath(app, $httpParamSerializer(form))
 
   vm.close = ->
     $uibModalInstance.close()
