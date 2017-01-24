@@ -8,32 +8,35 @@
         <rd-widget-body classes="no-padding">
           <table class="table table-layout-fixed">
             <thead>
-              <tr>
-                <th>App</th>
-                <th style="width: 33%;">State</th>
-                <th style="width: 75px;">Action</th>
-              </tr>
+            <tr>
+              <th>App</th>
+              <th style="width: 33%;">State</th>
+              <th style="width: 75px;">Action</th>
+            </tr>
             </thead>
-            <tbody>
-              <tr ng-repeat="app in vm.organization.active_apps | filter : {stack: 'connector'}">
-                <td class="nowrap">
-                  <img class="small-app-logo" ng-src="{{::main.trustSrc(app.app_logo)}}" alt="{{::app.name}} logo" />
-                  <span class="app-name">{{::app.name}}</span>
-                </td>
-                <td>
-                  <div ng-show="!vm.mnoAppInstances.isOauthConnected(app)">
-                    <i class="fa fa-exclamation-triangle text-danger"></i>
-                    <span>Not connected</span>
-                  </div>
-                  <div ng-show="vm.mnoAppInstances.isOauthConnected(app)">
-                    <i class="fa fa-check-square-o text-success"></i>
-                    <span>Connected!</span>
-                  </div>
-                </td>
-                <td>
-                  <a class="btn-connect" href="" ng-show="!vm.mnoAppInstances.isOauthConnected(app)" ng-click="vm.connectAppInstance(app)">Connect</a>
-                </td>
-              </tr>
+            <tbody ng-repeat="appType in vm.typesOfApp | orderBy : '-'">
+            <tr>
+              <td translate>{{vm.appTypeTitle[appType]}}</td>
+            </tr>
+            <tr ng-repeat="app in vm.organization.active_apps | filter : {stack: appType}">
+              <td class="nowrap">
+                <img class="small-app-logo" ng-src="{{::main.trustSrc(app.app_logo)}}" alt="{{::app.name}} logo" />
+                <span class="app-name">{{::app.name}}</span>
+              </td>
+              <td>
+                <div ng-hide="vm.mnoAppInstances.isConnected(app)">
+                  <i class="fa fa-exclamation-triangle text-danger"></i>
+                  <span>Not connected</span>
+                </div>
+                <div ng-show="vm.mnoAppInstances.isConnected(app)">
+                  <i class="fa fa-check-square-o text-success"></i>
+                  <span>Connected!</span>
+                </div>
+              </td>
+              <td>
+                <a class="btn-connect" href="" ng-show="!vm.mnoAppInstances.isConnected(app)" ng-click="vm.connectAppInstance(app)">Connect</a>
+              </td>
+            </tr>
             </tbody>
           </table>
         </rd-widget-body>

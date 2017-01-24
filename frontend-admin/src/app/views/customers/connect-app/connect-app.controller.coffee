@@ -5,11 +5,16 @@
   vm.mnoAppInstances = MnoAppsInstances
 
   vm.orgId = $stateParams.orgId
+  vm.appTypeTitle = {
+    connector: 'Connect these apps',
+    cloud: 'No action required'
+  }
 
   vm.isLoading = true
   MnoeOrganizations.get($stateParams.orgId).then(
     (response) ->
       vm.organization = response.data
+      vm.typesOfApp = _.map(_.groupBy(vm.organization.active_apps, 'stack'), (value, key) -> key)
   ).finally(-> vm.isLoading = false)
 
   vm.launchAppInstance = (app) ->
